@@ -3,10 +3,7 @@ package pl.coderslab;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import pl.coderslab.beans.HelloWorld;
-import pl.coderslab.beans.ScopePrototype;
-import pl.coderslab.beans.ScopeSingleton;
-import pl.coderslab.beans.Ship;
+import pl.coderslab.beans.*;
 import pl.coderslab.config.ApplicationConfig;
 
 /**
@@ -25,6 +22,9 @@ public class App {
 
         HelloWorld helloWorld = context.getBean("helloWorld", HelloWorld.class);
         helloWorld.hello();
+
+        NotificationService emailService = context.getBean("emailService", EmailService.class);
+        emailService.send();
 
         Ship ship = context.getBean("blackPearl", Ship.class);
         ship.getCaptain().startSailing();
